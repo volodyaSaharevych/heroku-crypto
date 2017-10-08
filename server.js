@@ -6,8 +6,8 @@ const parsBodyPost = require('body-parser');
 app.use( parsBodyPost.json() ); 
 app.use( parsBodyPost.urlencoded({ extended: true }) ); 
 
-app.post( '/crypto/', ( req, res ) => {
-    let product = req.body.product;
+app.get( '/crypto/:product', ( req, res ) => {
+    let product = req.params.product;
     let h = md5.HmacMD5( product, '33928d837fbb80bf876718623ad70925404f9f76').toString();
     res.send( h );
 });
