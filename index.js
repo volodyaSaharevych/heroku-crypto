@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 var md5 = require('./node_modules/crypto-js');
 var parsBodyPost = require('body-parser');
-var rout = express.Router;
+var rout = express.Router();
 var cors = require('cors');
 var corsOptions = {
     origin  : 'http://freeman.org.ua/',
@@ -22,7 +22,7 @@ app.use( function ( req, res, next ) {
 app.use( parsBodyPost.json() ); 
 app.use( parsBodyPost.urlencoded({ extended: true }) ); 
 
-app.post( '/crypto/', cors( corsOptions ), ( req, res, next ) => {
+rout.post( '/crypto/', cors( corsOptions ), ( req, res, next ) => {
     let product = req.body.product;
     let h = md5.HmacMD5( product, '33928d837fbb80bf876718623ad70925404f9f76').toString();
     res.send( h );
