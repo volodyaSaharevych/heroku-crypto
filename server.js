@@ -1,20 +1,24 @@
-const express = require('express');
-const app = express();
-const md5 = require('./node_modules/crypto-js');
-const parsBodyPost = require('body-parser');
-const cors = require('cors');
-// app.listen( process.env.PORT || 8080 );
-const corsOptions = {
-    origin : 'http://freeman.org.ua/cart',
+var express = require('express');
+var app = express();
+var md5 = require('./node_modules/crypto-js');
+var parsBodyPost = require('body-parser');
+var cors = require('cors');
+var corsOptions = {
+    origin  : 'http://freeman.org.ua/cart',
+    methods : ['POST'],
     optionsSuccessStatus : 200 
 };
-app.use( function (req, res, next ) {
-    res.header("Access-Control-Allow-Origin", '*');
-    res.header("Access-Control-Allow-Credentials", true);
-    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+
+app.listen( process.env.PORT || 8080 );
+
+app.use( function ( req, res, next ) {
+    res.header( 'Access-Control-Allow-Origin', '*' );
+    res.header( 'Access-Control-Allow-Credentials', true );
+    res.header( 'Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS' );
+    res.header( 'Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json' );
     next();
 });
+
 app.use( parsBodyPost.json() ); 
 app.use( parsBodyPost.urlencoded({ extended: true }) ); 
 
