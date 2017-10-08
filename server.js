@@ -4,7 +4,7 @@ var md5 = require('./node_modules/crypto-js');
 var parsBodyPost = require('body-parser');
 var cors = require('cors');
 var corsOptions = {
-    origin  : 'http://freeman.org.ua/cart',
+    origin  : 'http://freeman.org.ua/',
     methods : ['POST'],
     optionsSuccessStatus : 200 
 };
