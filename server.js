@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var md5 = require('./node_modules/crypto-js');
 var parsBodyPost = require('body-parser');
+var rout = express.Router;
 var cors = require('cors');
 var corsOptions = {
     origin  : 'http://freeman.org.ua/',
