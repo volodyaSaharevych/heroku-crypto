@@ -4,8 +4,6 @@ var md5          = require('crypto-js');
 var parsBodyPost = require('body-parser');
 var cors         = require('cors');
 
-app.listen( process.env.PORT || 8080 );
-
 app.use( parsBodyPost.json() ); 
 app.use( cors() );
 app.use( parsBodyPost.urlencoded({ extended: true }) ); 
